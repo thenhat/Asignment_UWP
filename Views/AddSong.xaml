@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="I_Like_Music.Views.AddSong"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:I_Like_Music.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Margin="20">
+        <TextBlock FontSize="25" FontWeight="Bold" TextAlignment="Center" Margin="30">ADD SONG</TextBlock>
+        <ScrollViewer Height="450" ZoomMode="Disabled">
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Width="150" FontWeight="Bold">Song Name</TextBlock>
+                    <TextBox VerticalAlignment="Center" FontSize="20" Width="500" x:Name="SongName"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Width="150" FontWeight="Bold">Description</TextBlock>
+                    <TextBox VerticalAlignment="Center" FontSize="20" Width="500" x:Name="Description"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Width="150" FontWeight="Bold">Author</TextBlock>
+                    <TextBox VerticalAlignment="Center" FontSize="20" Width="500" x:Name="Author"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Width="150" FontWeight="Bold">Singer</TextBlock>
+                    <TextBox VerticalAlignment="Center" FontSize="20" Width="500" x:Name="Singer"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Width="150" FontWeight="Bold">Thumbnail</TextBlock>
+                    <TextBox VerticalAlignment="Center" FontSize="20" Width="500" x:Name="Thumbnail"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Width="150" FontWeight="Bold">Link</TextBlock>
+                    <TextBox VerticalAlignment="Center" FontSize="20" Width="500" x:Name="Link"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button VerticalAlignment="Center" FontSize="20" Margin="30" Padding="25 5" FontFamily="Times New Roman"  Click="Create_Song">Save</Button>
+            <Button VerticalAlignment="Center" FontSize="20" Padding="25 5" FontFamily="Times New Roman" Click="Reset_Clicked">Reset</Button>
+        </StackPanel>
+    </StackPanel> 
+</Page>

@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="I_Like_Music.Views.MySong"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:I_Like_Music.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:I_Like_Music.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Loaded="LoadMySongList">
+        <TextBlock FontSize="25" FontWeight="Bold" TextAlignment="Center" Margin="30">PLAYLISTS</TextBlock>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ScrollViewer Height="600" ZoomMode="Disabled">
+                <ListView x:Name="Songs" Grid.Row="0"  ItemClick="HandleClickSong" IsItemClickEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Song" >
+                            <Grid AutomationProperties.Name="{x:Bind name}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Margin="0 10" CornerRadius="100">
+                                    <Image Source="{x:Bind thumbnail}" Width="100" Height="100" Stretch="Fill"/>
+                                </StackPanel>
+                                <StackPanel Margin="15 10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="{x:Bind name}" FontSize="16" FontWeight="Bold" Style="{ThemeResource BaseTextBlockStyle}" Margin="0 5" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Singer :  " FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                        <TextBlock Text="{x:Bind singer}" FontWeight="Normal" FontSize="12" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Author :  " FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                        <TextBlock Text="{x:Bind author}" FontSize="12" FontWeight="Normal" Style="{ThemeResource CaptionTextBlockStyle}"/>
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+            <CommandBar Grid.Row="1">
+                <AppBarToggleButton Icon="Shuffle" Label="Shuffle"/>
+                <AppBarToggleButton Icon="RepeatAll" Label="Repeat"/>
+                <AppBarSeparator/>
+                <AppBarButton Icon="Back" Label="Previous"  Click="HandlePrev"/>
+                <AppBarButton x:Name="PlayButton" Icon="Play" Label="Play"  Click="HandleClickPlay"/>
+                <AppBarButton Icon="Forward" Label="Next" Click="HandleNext"/>
+
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Label="Like"/>
+                    <AppBarButton Label="Dislike"/>
+                </CommandBar.SecondaryCommands>
+
+                <CommandBar.Content>
+                    <TextBlock x:Name="StatusText" Margin="10"/>
+                </CommandBar.Content>
+            </CommandBar>
+        </Grid>
+        <MediaPlayerElement x:Name="MyPlayer"/>
+    </StackPanel>
+</Page>
